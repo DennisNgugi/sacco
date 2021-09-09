@@ -16,20 +16,20 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor
 @Builder
 
-@AttributeOverrides(
+@AttributeOverrides({
         @AttributeOverride(
-                name="name",
-                column = @Column(name="next_of_kin_name")
+                name = "name",
+                column = @Column(name = "next_of_kin_name")
         ),
         @AttributeOverride(
-                name="phoneNumber",
-                column = @Column(name="next_of_kin_mobile")
+                name = "phoneNumber",
+                column = @Column(name = "next_of_kin_mobile")
         ),
         @AttributeOverride(
-                name="relationship",
-                column = @Column(name="relationship")
-        ),
-)
+                name = "relationship",
+                column = @Column(name = "relationship")
+        )
+})
 public class NextOfKin {
     private String name;
     private String phoneNumber;

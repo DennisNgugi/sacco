@@ -1,5 +1,6 @@
 package com.example.sacco.members;
 
+import com.example.sacco.account.Account;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -27,6 +29,7 @@ public class Member {
             generator = "member_sequence"
     )
     private Long memberId;
+    private Integer idNumber;
     private String firstName;
     private String lastName;
     private String emailAddress;
@@ -37,6 +40,11 @@ public class Member {
     private Date updatedAt;
     @Embedded
     private NextOfKin nextOfKin;
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
+    private Account account;
 
 
 }
