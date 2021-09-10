@@ -2,11 +2,13 @@ package com.example.sacco.members;
 
 import com.example.sacco.account.Account;
 import com.example.sacco.account.AccountRepository;
+import com.example.sacco.exceptions.MemberNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class MemberService {
@@ -53,9 +55,13 @@ public class MemberService {
 
     }
 
-    public Member getMemberById(Long memberId) {
+    public Member getMemberById(Long memberId) throws MemberNotFoundException {
 
-        return memberRepository.findById(memberId).get();
+        Optional<Member> member = memberRepository.findById(memberId);
+        if(!member.isPresent()){
+            throw new MemberNotFoundException("Member Not Available");
+        }
+        return member.get();
     }
 
     public void deleteMember(Long memberId) {

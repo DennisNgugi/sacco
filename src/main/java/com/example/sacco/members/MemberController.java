@@ -1,6 +1,7 @@
 package com.example.sacco.members;
 
 import com.example.sacco.account.Account;
+import com.example.sacco.exceptions.MemberNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class MemberController {
     }
 
     @GetMapping("/{id}")
-    public Member getMemberById(@PathVariable("id") Long memberId){
+    public Member getMemberById(@PathVariable("id") Long memberId) throws MemberNotFoundException {
         LOGGER.info("Inside get member ID of Member Controller");
         return memberService.getMemberById(memberId);
     }
