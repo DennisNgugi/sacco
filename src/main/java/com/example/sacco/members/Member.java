@@ -9,6 +9,10 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
@@ -29,11 +33,14 @@ public class Member {
             generator = "member_sequence"
     )
     private Long memberId;
-    private Integer idNumber;
+    private Double idNumber;
+    @NotEmpty(message = "First name is required")
     private String firstName;
     private String lastName;
+    @NotEmpty(message = "Email address is required")
+    @Email
     private String emailAddress;
-    private String phoneNumber;
+    private Double phoneNumber;
     @CreationTimestamp
     private Date createdAt;
     @UpdateTimestamp

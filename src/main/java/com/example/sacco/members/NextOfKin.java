@@ -9,6 +9,7 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotEmpty;
 
 @Embeddable
 @Data
@@ -31,6 +32,7 @@ import javax.persistence.Embeddable;
         )
 })
 public class NextOfKin {
+    @NotEmpty(message = "next of kin name is required")
     private String name;
     private String phoneNumber;
     private String relationship;
