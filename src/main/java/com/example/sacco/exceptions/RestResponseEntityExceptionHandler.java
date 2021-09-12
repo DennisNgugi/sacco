@@ -11,7 +11,15 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ResponseStatus
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(MemberNotFoundException.class)
-    public ResponseEntity<ErrorMessage> departmentNotFoundException(MemberNotFoundException ex, WebRequest request){
+    public ResponseEntity<ErrorMessage> memberNotFoundException(MemberNotFoundException ex, WebRequest request){
+
+        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, ex.getMessage());
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+    }
+
+    @ExceptionHandler(AccountNotFoundException.class)
+    public ResponseEntity<ErrorMessage> accountNotFoundException(AccountNotFoundException ex, WebRequest request){
 
         ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, ex.getMessage());
 

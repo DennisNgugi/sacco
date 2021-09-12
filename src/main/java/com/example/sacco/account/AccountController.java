@@ -1,5 +1,6 @@
 package com.example.sacco.account;
 
+import com.example.sacco.exceptions.AccountNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class AccountController {
 
 
     @GetMapping("{id}")
-    public ResponseEntity<Account> getAccountById(@PathVariable("id") Long accountId){
+    public ResponseEntity<Account> getAccountById(@PathVariable("id") Long accountId) throws AccountNotFoundException {
         LOGGER.info("Inside get account ID of Account Controller");
         Account checkAccount = accountService.getAccountById(accountId);
         return new ResponseEntity<Account>(checkAccount, HttpStatus.OK);
