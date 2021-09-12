@@ -20,7 +20,8 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long accountId;
-    private String accountNumber;
+    @NotEmpty(message = "Account number is required")
+    private Double accountNumber;
     private String accountType;
     private Boolean openAccount;
     private Integer accountBalance;

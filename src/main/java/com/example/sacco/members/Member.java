@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -51,6 +52,7 @@ public class Member {
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
     )
+    @Valid
     private Account account;
 
 

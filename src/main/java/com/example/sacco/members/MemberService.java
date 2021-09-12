@@ -31,7 +31,7 @@ public class MemberService {
                 .relationship(member.getNextOfKin().getRelationship())
                 .build();
         Account account = Account.builder()
-                .accountNumber(member.getAccount().getAccountNumber())
+                .accountNumber(member.getIdNumber())
                 .accountType(member.getAccount().getAccountType())
                 .openAccount(member.getAccount().getOpenAccount())
                 .accountBalance(member.getAccount().getAccountBalance())

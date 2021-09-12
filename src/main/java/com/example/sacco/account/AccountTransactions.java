@@ -21,4 +21,9 @@ public class AccountTransactions {
     private String transactionAmount;
 
 
+    public AccountTransactions saveTransaction(AccountTransactions accountTransactions) {
+        // check if account ID exists
+        return accountTransactions;
+        // save the transaction with account id
+    }
 }
