@@ -1,6 +1,5 @@
 package com.example.sacco.members;
 
-import com.example.sacco.account.Account;
 import com.example.sacco.exceptions.MemberNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -6,6 +6,7 @@ import com.example.sacco.exceptions.MemberNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,7 +22,7 @@ public class MemberService {
     public List<Member> getMembers() {
     return memberRepository.findAll();
     }
-
+    @Transactional
     public Member saveMember(Member member) {
         //System.out.println("member = " + member);
 
@@ -49,10 +50,6 @@ public class MemberService {
 
 
         return memberRepository.save(member);
-
-
-
-
     }
 
     public Member getMemberById(Long memberId) throws MemberNotFoundException {

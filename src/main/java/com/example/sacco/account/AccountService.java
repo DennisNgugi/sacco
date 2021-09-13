@@ -15,7 +15,7 @@ public class AccountService {
     public Account getAccountById(Long accountId) throws AccountNotFoundException {
         Optional<Account> account = accountRepository.findById(accountId);
         if(!account.isPresent()){
-            throw new AccountNotFoundException("Account is not available");
+            throw new AccountNotFoundException("Cannot find account of ID " +accountId);
         }
         return account.get();
     }

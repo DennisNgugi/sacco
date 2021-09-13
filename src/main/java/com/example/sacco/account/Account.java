@@ -20,7 +20,6 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long accountId;
-    @NotEmpty(message = "Account number is required")
     private Double accountNumber;
     private String accountType;
     private Boolean openAccount;
@@ -31,11 +30,6 @@ public class Account {
             referencedColumnName = "memberId"
     )
     private Member member;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(
-            name = "account_id",
-            referencedColumnName = "accountId"
-    )
-    private List<AccountTransactions> transactions;
+
 
 }

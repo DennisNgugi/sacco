@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 @Entity
 @Data
@@ -17,13 +20,14 @@ public class AccountTransactions {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long transactionId;
     private Integer transactionCode;
-    private Date transactionDate;
-    private String transactionAmount;
+    private String transactionType;
+    private LocalDateTime transactionDate;
+    private Double transactionAmount;
 
-
-    public AccountTransactions saveTransaction(AccountTransactions accountTransactions) {
-        // check if account ID exists
-        return accountTransactions;
-        // save the transaction with account id
-    }
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "account_id",
+            referencedColumnName = "accountId"
+    )
+    private Account account;
 }
